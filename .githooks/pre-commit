@@ -1,0 +1,17 @@
+
+#!/bin/sh
+#
+# Ce hook permet d'empêcher le push d'un fichier si le nom contient '.env'.
+
+# Example de code tiré des notes de cours
+echo "🔍 Vérification du code avant le commit..."
+
+# Vérifie qu'il n'y a pas de fichiers .env commités
+if git diff --cached --name-only | grep -q "\.env$"; then
+  echo "❌ ERREUR : Tu essaies de committer un fichier .env !"
+  echo "   Ajoute-le à ton .gitignore."
+  exit 1
+fi
+
+echo "✅ Vérification réussie."
+exit 0
