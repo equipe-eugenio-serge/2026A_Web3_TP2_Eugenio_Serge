@@ -1,0 +1,100 @@
+================================================================================
+PROCÉDURE 1 : CRÉATION D'ORGANISATION, GESTION DES RÔLES ET PROTECTION DE BRANCHE
+Projet : 2026A_Web3_TP2_Eugenio_Serge
+Dépôt  : https://github.com/equipe-eugenio-serge/2026A_Web3_TP2_Eugenio_Serge
+================================================================================
+
+--------------------------------------------------------------------------------
+RÉFÉRENCES ET SOURCES DOCUMENTAIRES :
+--------------------------------------------------------------------------------
+1. Création et gestion d'une organisation GitHub :
+   - https://docs.github.com/fr/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch
+2. Rôles et niveaux de permissions dans une organisation :
+   - https://docs.github.com/fr/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization
+3. Transfert d'un dépôt vers une organisation :
+   - https://docs.github.com/fr/repositories/creating-and-managing-repositories/transferring-a-repository
+4. Règles de protection des branches (Branch Protection Rules) :
+   - https://docs.github.com/fr/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule
+5. Spécifications du cours :
+   - Département d'informatique, Cégep de Sainte-Foy : https://www.cegep-ste-foy.qc.ca/
+   - Cours : Applications Web et Bases de Données (Session 4, 2026)
+6. Support et formulation technique :
+   - Google Gemini : https://gemini.google.com/
+
+================================================================================
+DÉROULEMENT ÉTAPE PAR ÉTAPE :
+================================================================================
+
+ÉTAPE 1 : CRÉATION D'UNE ORGANISATION GITHUB (GRATUITE)
+-------------------------------------------------------
+Objectif : Disposer d'un espace collaboratif où deux coéquipiers possèdent des droits
+strictement identiques d'administration générale (rôle "Owner").
+
+1. Se connecter à GitHub (https://github.com).
+2. Cliquer sur la photo de profil en haut à droite -> "Your organizations".
+3. Cliquer sur le bouton vert "New organization".
+4. Choisir l'option gratuite : "Create a free organization" (sous Free).
+5. Définir le nom de compte de l'organisation (ex: equipe-eugenio-serge).
+6. Renseigner l'adresse courriel de contact.
+7. Sélectionner "My personal account" et accepter les conditions générales.
+8. Cliquer sur "Next", puis passer les invitations préliminaires en cliquant 
+   sur "Complete setup".
+
+ÉTAPE 2 : ATTRIBUTION DU RÔLE ADMINISTRATEUR COMPLET ("OWNER") AU COÉQUIPIER
+----------------------------------------------------------------------------
+1. Dans l'organisation créée, ouvrir l'onglet "People" (ou "Members").
+2. Cliquer sur le bouton vert "Invite member".
+3. Saisir l'identifiant GitHub du coéquipier (ex: geny-g7).
+4. Sous "Which role should this person have?", cocher impérativement "Owner".
+   (Remarque : le rôle "Member" ne permet pas d'accéder aux réglages de sécurité).
+5. Cliquer sur "Send invitation".
+6. Action du coéquipier : ouvrir le courriel d'invitation reçu ou se connecter
+   sur GitHub pour accepter l'invitation ("Join equipe-eugenio-serge").
+7. Vérification : le compte du coéquipier doit afficher le statut "Owner".
+
+ÉTAPE 3 : TRANSFERT DU DÉPÔT PERSONNEL VERS L'ORGANISATION
+----------------------------------------------------------
+1. Accéder au dépôt existant sous le compte personnel de Serge :
+   https://github.com/Serge-Noah/2026A_Web3_TP2_Eugenio_SergeV2
+2. Aller dans l'onglet "Settings" (en haut à droite).
+3. Dans la section "General" (colonne de gauche), faire défiler tout en bas
+   jusqu'au bloc rouge "Danger Zone".
+4. Cliquer sur le bouton "Transfer ownership".
+5. Cocher l'option "Select one of my organizations" et choisir "equipe-eugenio-serge".
+6. Vérifier le nom cible du dépôt : "2026A_Web3_TP2_Eugenio_Serge".
+7. Dans le champ de confirmation, taper la chaîne exacte requise :
+   Serge-Noah/2026A_Web3_TP2_Eugenio_SergeV2
+8. Cliquer sur le bouton rouge "I understand, transfer this repository.".
+9. Valider avec votre méthode d'authentification (2FA).
+
+ÉTAPE 4 : AJOUT DE L'ENSEIGNANT (FILIAT00) COMME COLLABORATEUR
+--------------------------------------------------------------
+1. Aller sur le dépôt transféré :
+   https://github.com/equipe-eugenio-serge/2026A_Web3_TP2_Eugenio_Serge
+2. Aller dans "Settings" -> menu de gauche "Collaborators and teams".
+3. Cliquer sur le bouton vert "Add people".
+4. Saisir le nom d'utilisateur enseignant : filiat00
+5. Sélectionner son compte et valider l'invitation avec un rôle Read/Write standard.
+
+ÉTAPE 5 : CONFIGURATION DE LA PROTECTION DE LA BRANCHE PRINCIPALE (MAIN)
+------------------------------------------------------------------------
+1. Toujours dans "Settings", dans le menu latéral gauche, cliquer sur "Branches".
+2. Cliquer sur "Add classic branch protection rule" (ou "Add rule").
+3. Configurer les paramètres comme suit :
+   - Branch name pattern : main
+   - Cocher : "Require a pull request before merging"
+   - Cocher : "Require approvals"
+   - Définir le nombre d'approbations requises sur : 1
+   - Cocher : "Do not allow bypassing the above settings" (pour appliquer la
+     règle de manière stricte, y compris pour les Owners).
+4. Cliquer sur le bouton vert "Create" ou "Save changes" en bas de page.
+
+ÉTAPE 6 : MISE À JOUR DE L'URL DISTANTE DANS LE TERMINAL LOCAL (VS CODE)
+------------------------------------------------------------------------
+1. Ouvrir le terminal dans le dossier local du projet.
+2. Mettre à jour le pointeur vers la nouvelle adresse de l'organisation :
+     git remote set-url origin https://github.com/equipe-eugenio-serge/2026A_Web3_TP2_Eugenio_Serge.git
+3. Contrôler la configuration :
+     git remote -v
+   -> Les lignes 'fetch' et 'push' doivent pointer vers 'equipe-eugenio-serge'.
+================================================================================
