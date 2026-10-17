@@ -1,41 +1,37 @@
-
 #!/bin/bash
-
-# Script previously used for another piece school works(Infrastructure...)
-
-# This script verifies that any commit message follows the Conventional Commits specifications.
-# If specifications are followed, messages are validated and commit operations are accepted.
-# An appropriate message is then displayed to the user to inform that the commit has been successful.
-# If not, an error message is then displayed to the user and an error code is issued (ie not 0).
-
-# Sources : This specific implémentation is an adapted version developped
-# from a combination of solution produced by the Google and Gemini and...
-# https://mu88.github.io/2022/07/29/Git-hook-conventional-commit.html
+# ==============================================================================
+# Hook Git : commit-msg
+# Description : Valide que les messages respectent la norme Conventional Commits.
+#
+# Références et documentation :
+#   - Spécification officielle Conventional Commits v1.0.0 :
+#     https://www.conventionalcommits.org/fr/v1.0.0/
+#   - Tutoriel de base pour l'implémentation du hook (mu88) :
+#     https://mu88.github.io/2022/07/29/Git-hook-conventional-commit.html
+#   - Documentation Git sur le hook commit-msg :
+#     https://git-scm.com/docs/githooks#_commit_msg
+#   - Travaux pratiques antérieurs : Cours "Infrastructure technologique et virtualisation"
+#     (2026), Cégep de Sainte-Foy : https://www.cegep-ste-foy.qc.ca/
+#   - Correction syntaxique Bash, support regex et nettoyage CRLF :
+#     Google Gemini (https://gemini.google.com/)
+# ==============================================================================
 
 echo "-----------------------------------------------------------------"
 echo "🔍 Verification - Commit message conformity..."
 
-# Vérifie que le message du commit respecte les normes / préfixes de Conventional Commits
-
-# Path to the temporary file containing the commit message (provided by Git)
 COMMIT_MSG_FILE=$1
 COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
 
-# 1. Ignore automated merges or rebases or initial commits...
+# 1. Ignorer les merges, reverts ou commits initiaux automatiques
 if echo "$COMMIT_MSG" | grep -qE "^(Merge branch|Revert |Initial commit)"; then
-    echo "✅ Vérification du message réussie.\n"
-    exit 0
+  echo "✅ Message validation bypassed (merge/initial commit)."
+  exit 0
 fi
 
-
-# 2. Define the Conventional Commits Regex
-# Format: type(scope)?(!)?:\sdescription
-# Allowed types: build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test...
-# These are prefix types recommended by the Conventional Commit Community/Organization/website.
+# 2. Définition du pattern Conventional Commits
 ALLOWED_TYPES_REGEXP="^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-z0-9_-]+\))?!?: .+$"
 
-# 3. Validate the incoming commit message against the established regex or pattern...
-# and reject the commit operation if the commit message does not follow a certain pattern...
+# 3. Validation du message
 if [[ ! $COMMIT_MSG =~ $ALLOWED_TYPES_REGEXP ]]; then
   echo -e "❌ ERROR : Invalid commit message format !"
   echo -e "The commit message does not follow the \033[1;36mConventional Commits\033[0m specifications !"
@@ -48,6 +44,9 @@ if [[ ! $COMMIT_MSG =~ $ALLOWED_TYPES_REGEXP ]]; then
   echo -e "  feat(auth): add login button"
   echo -e "  fix: resolve memory leak"
   echo -e "\nYour message was: \"$COMMIT_MSG\""
-  echo -e "Please, review the message and try again later."
+  echo -e "Please review the message and try again."
   exit 1
+fi
 
+echo "✅ Message de commit conforme."
+exit 0
