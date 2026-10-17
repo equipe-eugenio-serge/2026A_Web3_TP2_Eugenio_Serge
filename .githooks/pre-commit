@@ -1,7 +1,7 @@
 #!/bin/sh
 # ==============================================================================
 # Hook Git : pre-commit
-# Description : Empêche le commit de fichiers d'environnement sensibles (.env*).
+# Description : Empêche le commit de fichiers d'environnement sensibles.
 #
 # Références et documentation :
 #   - Documentation officielle Git Hooks :
@@ -16,8 +16,8 @@
 echo "-----------------------------------------------------------------"
 echo "🔍 Vérification du code avant le commit..."
 
-# Détecte tout fichier nommé .env ou contenant .env
-if git diff --cached --name-only | grep -E "(^|/)\.env" > /dev/null 2>&1; then
+# Détecte tout fichier se terminant par .env OU commençant par .env
+if git diff --cached --name-only | grep -E "(\.env$|(^|/)\.env)" > /dev/null 2>&1; then
   echo "❌ ERREUR : Tu essaies de committer un fichier .env !"
   echo "   Ajoute-le à ton .gitignore."
   exit 1
