@@ -1,0 +1,97 @@
+================================================================================
+PROCÉDURE : TEST DE LA PROTECTION DE BRANCHE ET WORKFLOW PULL REQUEST
+Projet : 2026A_Web3_TP2_Eugenio_Serge
+================================================================================
+
+--------------------------------------------------------------------------------
+1. RÉSULTAT DU TEST DE BLOCAGE (PUSH DIRECT SUR MAIN)
+--------------------------------------------------------------------------------
+Objectif :
+Vérifier que GitHub interdit tout push direct sur la branche 'main'.
+
+Commandes exécutées :
+  git checkout main
+  echo "# Test de blocage" >> test-regle.txt
+  git add test-regle.txt
+  git commit -m "chore: test blocage push direct"
+  git push origin main
+
+Comportement attendu et validé :
+  Le serveur GitHub refuse le push avec l'erreur :
+  "remote: error: GH006: Protected branch update failed for refs/heads/main."
+  "remote: - Changes must be made through a pull request."
+
+--------------------------------------------------------------------------------
+2. NETTOYAGE DU COMMIT LOCAL REJETÉ
+--------------------------------------------------------------------------------
+Puisque le commit a été rejeté par GitHub, il reste bloqué en local. Pour 
+remettre l'espace de travail au propre et aligné sur origin/main :
+
+Commande :
+  git reset --hard origin/main
+
+Vérification :
+  git status
+  -> Doit afficher : "nothing to commit, working tree clean"
+
+--------------------------------------------------------------------------------
+3. PROCÉDURE DU CYCLE DE DÉVELOPPEMENT STANDARD (PULL REQUEST)
+--------------------------------------------------------------------------------
+Toute nouvelle tâche ou fonctionnalité doit impérativement respecter ce flux :
+
+Étape A : Création de la branche de travail en local
+----------------------------------------------------
+1. Se positionner sur main et récupérer les dernières modifications :
+     git checkout main
+     git pull origin main
+
+2. Créer une nouvelle branche (1 branche = 1 fonctionnalité) :
+     git checkout -b feat/nom-de-votre-tache
+     (Exemple : git checkout -b feat/visionneuse-images)
+
+Étape B : Développement et commit local
+---------------------------------------
+3. Effectuer vos modifications de code.
+4. Indexer les fichiers :
+     git add .
+5. Committer en respectant la norme Conventional Commits :
+     git commit -m "feat: ajout du module visionneuse"
+   *Note : Vos hooks pre-commit et commit-msg vont s'exécuter automatiquement.*
+
+Étape C : Publication de la branche sur GitHub
+----------------------------------------------
+6. Pousser la branche de travail vers le dépôt distant :
+     git push -u origin feat/nom-de-votre-tache
+
+Étape D : Ouverture et revue de la Pull Request sur GitHub
+----------------------------------------------------------
+7. Rendez-vous sur https://github.com/equipe-eugenio-serge/2026A_Web3_TP2_Eugenio_Serge
+8. Cliquez sur la bannière jaune "Compare & pull request" 
+   (ou allez dans l'onglet "Pull requests" -> "New pull request").
+9. Vérifiez la cible : base: main  <-  compare: feat/nom-de-votre-tache.
+10. Donnez un titre clair, décrivez vos ajouts et cliquez sur "Create pull request".
+11. Constat : Le bouton "Merge pull request" est grisé car 1 approbation est requise.
+
+Étape E : Approbation par le coéquipier (Examen obligatoire)
+------------------------------------------------------------
+12. Le coéquipier (geny-g7 ou Serge-Noah selon qui a ouvert la PR) se connecte.
+13. Il ouvre la Pull Request en cours.
+14. Il se rend dans l'onglet "Files changed" (Fichiers modifiés).
+15. Il clique sur le bouton vert en haut à droite : "Review changes".
+16. Il sélectionne "Approve" (Approuver) et clique sur "Submit review".
+
+Étape F : Fusion (Merge) et nettoyage
+-------------------------------------
+17. Une fois l'approbation reçue, le bouton vert "Merge pull request" est actif.
+18. Cliquez sur "Merge pull request", puis sur "Confirm merge".
+19. Cliquez sur le bouton violet "Delete branch" pour supprimer la branche distante.
+
+Étape G : Synchronisation locale après la fusion
+------------------------------------------------
+20. Sur votre machine, revenez sur main et rapatriez la fusion :
+     git checkout main
+     git pull origin main
+
+21. Supprimez la branche locale désormais intégrée :
+     git branch -d feat/nom-de-votre-tache
+================================================================================
