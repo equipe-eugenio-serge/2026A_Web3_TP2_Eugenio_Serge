@@ -4,6 +4,9 @@
 //   - Liste des devises : /symbols (https://api.apilayer.com/exchangerates_data/symbols)
 //   - Taux de conversion : /latest?base=USD (https://api.apilayer.com/exchangerates_data/latest)
 // Authentification : Clé transmise en paramètre d'URL (apikey=...)
+// Cours : Filiatreault, K., JS – Promises, async et await (p. 7 à 13);
+//         Lemelin, B., Théorie – TypeScript (p. 6, throw ; p. 14, tableaux ; p. 16, types objets ; p. 25, as) ;
+//         JS – Tableaux (p. 3, push ; p. 6, map) ; JS – Array Cheat Sheet (p. 2, sort/localeCompare ; p. 3, find).
 
 
 import { CLE_APILAYER, URL_SYMBOLES, URL_TAUX, construireUrl } from './config';
