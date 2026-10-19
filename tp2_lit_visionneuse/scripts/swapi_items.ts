@@ -13,12 +13,12 @@
     into another file ?
 */
 
-import { SwapiResources } from "./swapi_types";
-export * as SwapiResources from './swapi_items';
+import { SwapiResourceTypes } from "./swapi_types";
+export * as SwapiResourceItems from './swapi_items';
 
 
 "use strict";
-const obtenirFilmAPI = (url: string) => {
+export const obtenirFilmAPI = (url: string) => {
     return new Promise((resolve, reject) => {
         fetch(url)
             .then((response) => response.json())
@@ -33,7 +33,7 @@ const obtenirFilmAPI = (url: string) => {
 
 
 // Appel asynchrone vers une ressource d'API (url)...
-const getResourceFromAPI = (ressourceUrl: string) => {
+export const getResourceFromAPI = (ressourceUrl: string) => {
     return new Promise((resolve, reject) => {
         fetch(ressourceUrl)
             .then((response) => response.json())
@@ -42,6 +42,7 @@ const getResourceFromAPI = (ressourceUrl: string) => {
             })
             .catch((error) => {
                 reject(error);
+                console.log(error);
             })
     });
 };
@@ -52,7 +53,7 @@ const getResourceFromAPI = (ressourceUrl: string) => {
     la fonction ci-dessous retourne un ensemble ciblé de resource 
     entre deux bornes d'identifiants considérés...
 */
-function getResourceCollections(firstResourceId: number, 
+export function getResourceCollections(firstResourceId: number, 
                             lastResourceId: number, 
                             baseResourceUrl: string = "films/", 
                             baseApiUrl: string = "https://swapi.dev/api/") {
@@ -100,9 +101,10 @@ const filmResourceUrl = "films/";
 const planetResourceUrl = "planets/";
 const swapiUrl = "https://swapi.dev/api/";
 
-// Objects devant être appelés ou construits dans le custom element de lit.
-const starWarsFilms : SwapiResources.Film[] = getResourceCollections(1, 5, swapiUrl, filmResourceUrl);
-const starWarsPlanets : SwapiResources.Planet[] = getResourceCollections(1, 10, swapiUrl, planetResourceUrl);
+// Objects pouvant être utilisés comme valeurs par défaut dans le custom element de lit. 
+// ou bien construits par de nouveaux appels à la fonction 'getResourceCollections(...).
+export const starWarsFilms : SwapiResourceTypes.Film[] = getResourceCollections(1, 5, swapiUrl, filmResourceUrl);
+export const starWarsPlanets : SwapiResourceTypes.Planet[] = getResourceCollections(1, 10, swapiUrl, planetResourceUrl);
 
 
 

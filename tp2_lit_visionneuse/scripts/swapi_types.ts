@@ -4,7 +4,7 @@
 // Sources : https://share.google/CzNHMIvitHAUeRupS
 // Search Query : Can I export the whole content of a typescript file 
 // into another file ?
-export * as SwapiResources from './star_wars';
+export * as SwapiResourceTypes from './swapi_types';
 
 
 // Les types définis dans ce code suit une forme globale 
@@ -47,7 +47,7 @@ export type People = {
     created: Date, 
     edited: Date, 
     url: string
-}
+};
 
 // Structure d'un objet 'planet' basé sur le retour de l'API
 // Réf. : https://swapi.dev/api/planets/1/
@@ -67,7 +67,7 @@ export type Planet = {
     created: Date,
     edited: Date,
     url: string
-}
+};
 
 // Structure d'un objet film basé sur le retour de l'API
 // Réf. : https://swapi.dev/api/films/3/
@@ -88,5 +88,5 @@ export type Film = {
     created: Date, 
     edited: Date, 
     url: string
-}
+};
 
