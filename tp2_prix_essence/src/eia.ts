@@ -11,9 +11,8 @@
 
 import { CLE_EIA, URL_EIA, construireUrl } from './config';
 
-import { CLE_EIA, URL_EIA, construireUrl } from './config';
 
-import type { CodeEtat } from './etats';
+import type { Codeetat } from './etats';
 
 export type PrixEia = {
     period: string,
