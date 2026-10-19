@@ -11,7 +11,6 @@
 
 import { CLE_EIA, URL_EIA, construireUrl } from './config';
 
-import { CLE_EIA, URL_EIA, construireUrl } from './config';
 
 import type { CodeEtat } from './etats';
 
