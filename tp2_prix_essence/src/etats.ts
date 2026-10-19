@@ -2,11 +2,11 @@
 // Cours : Lemelin, B., Théorie – TypeScript (p. 21, types de valeurs ; p. 16, types objets ; p. 14, tableaux).
 
 
-export type Codeetat = "EMM_EPM0_PTE_SNY_DPG" | "EMM_EPM0_PTE_SNY_DPG" | "EMM_EPM0_PTE_SCA_DPG" | "EMM_EPM0_PTE_SFL_DPG" | "EMM_EPM0_PTE_SCO_DPG" | "EMM_EPM0_PTE_SMA_DPG" | "EMM_EPM0_PTE_STX_DPG";
+export type CodeEtat = "EMM_EPM0_PTE_SNY_DPG" | "EMM_EPM0_PTE_SNY_DPG" | "EMM_EPM0_PTE_SCA_DPG" | "EMM_EPM0_PTE_SFL_DPG" | "EMM_EPM0_PTE_SCO_DPG" | "EMM_EPM0_PTE_SMA_DPG" | "EMM_EPM0_PTE_STX_DPG";
 
 export type Etat = {
     nom: String;
-    code: Codeetat;
+    code: CodeEtat;
 };
 
 export const ETATS: Etat[] = [
