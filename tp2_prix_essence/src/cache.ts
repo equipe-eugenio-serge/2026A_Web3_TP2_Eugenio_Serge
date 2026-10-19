@@ -5,3 +5,67 @@
 
 
 import type { Devise, ReponseTaux, obtenirDevises, obtenirTauxUSD} from './devises';
+
+const CLE_CACHE_TAUX = "tp2-taux-usd";
+const CLE_CACHE_DEVISES = "tp2-devises";
+
+export const TAUX_PAR_DEFAUT: ReponseTaux = {
+    success: true,
+    base: "USD",
+    date: "2026-10-17",
+    rates: { 
+        CAD: 1.41575, 
+        EUR: 0.889904, 
+        GBP: 0.77123, 
+        DKK: 6.6432, 
+        EGP: 48.52, 
+        HUF: 362.45, 
+        BRL: 5.065104,
+        USD: 1.0 
+    }
+};
+
+export const DEVISES_PAR_DEFAUT: Devise[] = [
+    { code: "CAD", nom: "Dollar canadien" },
+    { code: "EUR", nom: "Euro" },
+    { code: "GBP", nom: "Livre sterling" },
+    { code: "DKK", nom: "Couronne danoise" },
+    { code: "EGP", nom: "Livre égyptienne" },
+    { code: "HUF", nom: "Forint hongrois" },
+    { code: "BRL", nom: "Réal brésilien" },
+    { code: "USD", nom: "Dollar américain" }
+];
+
+export const obtenirTauxAvecCache = async () => {
+    const texte = localStorage.getItem(CLE_CACHE_TAUX);
+    if (texte !== null) {
+        return JSON.parse(texte) as ReponseTaux;
+    }
+
+    try {
+        const taux = await obtenirTauxUSD();
+        localStorage.setItem(CLE_CACHE_TAUX, JSON.stringify(taux));
+        return taux;
+    }
+    catch (e) {
+        console.error(e);
+        return TAUX_PAR_DEFAUT;
+    }
+};
+
+export const obtenirDevisesAvecCache = async () => {
+    const texte = localStorage.getItem(CLE_CACHE_DEVISES);
+    if (texte !== null) {
+        return JSON.parse(texte) as Devise[];
+    }
+
+    try {
+        const devises = await obtenirDevises();
+        localStorage.setItem(CLE_CACHE_DEVISES, JSON.stringify(devises));
+        return devises;
+    }
+    catch (e) {
+        console.error(e);
+        return DEVISES_PAR_DEFAUT;
+    }
+};
