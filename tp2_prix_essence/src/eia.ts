@@ -12,7 +12,7 @@
 import { CLE_EIA, URL_EIA, construireUrl } from './config';
 
 
-import type { Codeetat } from './etats';
+import type { CodeEtat } from './etats';
 
 export type PrixEia = {
     period: string,
@@ -40,7 +40,7 @@ export function construireUrlEia(code: CodeEtat, debut: string, fin: string): st
 
 export const obtenirPrix = async (code: CodeEtat, debut: string, fin: string) => {
     const reponse = await fetch(construireUrlEia(code, debut, fin));
-    const donnees = await reponse.json() as ReponseEia;
+    const donnees = await reponse.json() as ResponseEia;
 
     if (!donnees.response) {
         throw new Error("La réponse de l'API EIA est invalide.");

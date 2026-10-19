@@ -4,7 +4,8 @@
 //         Filiatreault, K., JS – Promises, async et await (p. 13, try/catch).
 
 
-import type { Devise, ReponseTaux, obtenirDevises, obtenirTauxUSD} from './devises';
+import type { Devise, ReponseTaux } from './devises';
+import { obtenirDevises, obtenirTauxUSD } from './devises';
 
 const CLE_CACHE_TAUX = "tp2-taux-usd";
 const CLE_CACHE_DEVISES = "tp2-devises";
