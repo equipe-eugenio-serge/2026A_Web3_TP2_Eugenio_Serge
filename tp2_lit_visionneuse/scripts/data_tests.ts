@@ -4,7 +4,7 @@
 // Sources : https://share.google/CzNHMIvitHAUeRupS
 // Search Query : Can I export the whole content of a typescript file 
 // into another file ?
-import { SwapiResources } from "./swapi_types";
+import { SwapiResourceTypes } from "./swapi_types";
 
 
 const planet1 = {

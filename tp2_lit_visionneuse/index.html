@@ -1,16 +1,59 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>tp2_lit_visionneuse</title>
-    <link rel="stylesheet" href="./src/index.css" />
-    <script type="module" src="/src/my-element.ts"></script>
-  </head>
-  <body>
-    <my-element>
-      <h1>Get started</h1>
-    </my-element>
-  </body>
+    <head>
+      <meta charset="UTF-8" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>tp2_lit_visionneuse</title>
+      <link rel="stylesheet" href="./src/index.css" />
+      <script type="module" src="/src/my-element.ts"></script>
+      <script type="module" src="/src/films-dropdown-list.ts"></script>
+      <script type="module" src="/src/swapi_app.ts"></script>
+      <script type="module" src="/src/swapi_carousel.ts"></script>
+      <script type="module" src="/src/swapi_planets_show.ts"></script>
+    </head>
+    <body>
+      <swapi-planets-show>
+        <!--<h1 class="text-primary">Bienvenue à Star Wars !</h1>-->
+      </swapi-planets-show>
+    </body>
+  <script type="module">
+      //import './SimpleCarousel.js';
+      import './src/swapi_carousel.ts';
+      //import './src/films-dropdown-list.ts';
+      
+      //const carousel = document.querySelector('swapi-carousel');
+      const carousel = document.querySelector('swapi-planets-show');
+      /*carousel.image_planets = [
+        'https://images.unsplash.com/photo-1501854140801-50d01698950b',
+        'https://unsplash.com',
+        'https://unsplash.com'
+      ];*/
+      
+      const imageCollections = [
+          { planetName: "alderaan", imageFileName: "alderaan.jpeg" },
+          { planetName: "coruscant", imageFileName: "coruscant.jpg" }, 
+          { planetName: "dagobah", imageFileName: "dagobah.jpg" }, 
+          { planetName: "endor", imageFileName: "endor.jpg" }, 
+          { planetName: "naboo", imageFileName: "naboo.jpeg" }, 
+          { planetName: "tatooine", imageFileName: "tatooine.jpeg" }, 
+          { planetName: "yavin4", imageFileName: "yavin4.jpg" }, 
+          { planetName: "yavin IV", imageFileName: "yavin4.jpg" }, 
+          { planetName: "yavin-IV", imageFileName: "yavin4.jpg" }
+      ];
+      
+      const collectionImages = [
+          { planetName: 'alderaan', imageFileName: 'alderaan.jpeg' },
+          { planetName: 'coruscant', imageFileName: 'coruscant.jpg' }, 
+          { planetName: 'dagobah', imageFileName: 'dagobah.jpg' }, 
+          { planetName: 'endor', imageFileName: 'endor.jpg' }, 
+          { planetName: 'naboo', imageFileName: 'naboo.jpeg' }, 
+          { planetName: 'tatooine', imageFileName: 'tatooine.jpeg' }, 
+          { planetName: 'yavin4', imageFileName: 'yavin4.jpg' }, 
+          { planetName: 'yavin IV', imageFileName: 'yavin4.jpg' }, 
+          { planetName: 'yavin-IV', imageFileName: 'yavin4.jpg' }
+      ];
+
+      carousel.swapiPlanetsImages = imageCollections;
+  </script>
 </html>
