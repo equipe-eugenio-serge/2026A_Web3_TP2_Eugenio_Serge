@@ -18,7 +18,18 @@ export * as SwapiResourceItems from './swapi_items';
 
 
 "use strict";
-export const obtenirFilmAPI = (url: string) => {
+
+/**
+ * 
+ * @param url :
+ * @returns 
+ * Compiling errors queried and resolved using explanations from search/IA.
+ * Reference : https://share.google/aimode/DsX8AnhmSTfZXXCY0
+ * Questions posées : j'ai le code suivant..., pourquoi le compilateur me dit 
+ * que la fonction obtenirFilmAPI() est de type 'any' ? 
+ * What's wrong with this code : (I copy my function code into the search engine...) ? 
+ */
+export const obtenirFilmAPI2 = (url: string) : Promise<SwapiResourceTypes.Film[]> => {
     return new Promise((resolve, reject) => {
         fetch(url)
             .then((response) => response.json())
@@ -26,9 +37,24 @@ export const obtenirFilmAPI = (url: string) => {
                 resolve(json)
             })
             .catch((error) => {
+                console.log(error);
                 reject(error);
             })
     });
+};
+
+// Sources : https://share.google/aimode/DsX8AnhmSTfZXXCY0
+export const obtenirFilmAPI = async (url: string): 
+    Promise<SwapiResourceTypes.Film[]> => {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error ! status: ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        // You can handle the error here or let it bubble up
+        console.log(error);
+        throw error; 
+    }
 };
 
 
@@ -42,7 +68,7 @@ export const getResourceFromAPI = (ressourceUrl: string) => {
             })
             .catch((error) => {
                 reject(error);
-                console.log(error);
+                //console.log(error);
             })
     });
 };

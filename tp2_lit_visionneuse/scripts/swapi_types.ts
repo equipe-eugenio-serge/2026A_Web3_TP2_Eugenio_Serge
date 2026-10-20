@@ -64,8 +64,8 @@ export type Planet = {
     population: number, 
     residents: People[], 
     films: Film[], 
-    created: Date,
-    edited: Date,
+    created: String,
+    edited: String,
     url: string
 };
 
