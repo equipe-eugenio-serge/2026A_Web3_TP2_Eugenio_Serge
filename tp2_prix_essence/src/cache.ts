@@ -2,6 +2,7 @@
 // Prompt (algorithme) : « recommence et fait ceci de B1 a B8 :donne moi l'algorithme de B1 ,
 //   quels sont les fichiers que l'on doit avaoir a quoi ils servent , leurs roles et les etapes de de B1,
 //   les differents algorithmes de B1, »
+
 // Cours : Lemelin, B., Exercice Révision TypeScript, README (localStorage.setItem/getItem,
 //         JSON.stringify, JSON.parse … as Type, test !== null) ;
 //         Lemelin, B., Théorie – TypeScript (p. 19, nullabilité ; p. 25, as) ;

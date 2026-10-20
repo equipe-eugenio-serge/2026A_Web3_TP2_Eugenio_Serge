@@ -8,6 +8,7 @@
 // Prompt (algorithme) : « recommence et fait ceci de B1 a B8 :donne moi l'algorithme de B1 ,
 //   quels sont les fichiers que l'on doit avaoir a quoi ils servent , leurs roles et les etapes de de B1,
 //   les differents algorithmes de B1, »
+
 // Cours : Filiatreault, K., JS – Promises, async et await (p. 7 à 13);
 //         Lemelin, B., Théorie – TypeScript (p. 6, throw ; p. 14, tableaux ; p. 16, types objets ; p. 25, as) ;
 //         JS – Tableaux (p. 3, push ; p. 6, map) ; JS – Array Cheat Sheet (p. 2, sort/localeCompare ; p. 3, find).
