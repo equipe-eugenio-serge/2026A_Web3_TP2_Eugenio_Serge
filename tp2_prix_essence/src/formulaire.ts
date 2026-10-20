@@ -1,3 +1,7 @@
+// Source : algorithme de B6 proposé par Claude (Anthropic, 2026), IA générative, le 19 octobre 2026.
+// Prompt (algorithme) : « recommence et fait ceci de B1 a B8 :donne moi l'algorithme de B1 ,
+//   quels sont les fichiers que l'on doit avaoir a quoi ils servent , leurs roles et les etapes de de B1,
+//   les differents algorithmes de B1, »
 //Source : Assistance à la compréhension et conception pas-à-pas assistée par IA (Gemini, Google), 19 octobre 2026.
 // Prompts utilisés dans la démarche :
 //   - « explique moi chaque notion module par module, tant que je n'ai pas bien compris un module on ne passe pas à l'autre »
