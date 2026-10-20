@@ -1,3 +1,8 @@
+// Source : algorithme de B6 proposé par Claude (Anthropic, 2026), IA générative, le 19 octobre 2026.
+// Prompt (algorithme) : « recommence et fait ceci de B1 a B8 :donne moi l'algorithme de B1 ,
+//   quels sont les fichiers que l'on doit avaoir a quoi ils servent , leurs roles et les etapes de de B1,
+//   les differents algorithmes de B1, »
+
 // Cours : JS – Tableaux (p. 5, filter ; p. 6, map et Math.round) ;
 //         JS – Array Cheat Sheet (p. 2, sort et localeCompare) ;
 //         Lemelin, B., Théorie – TypeScript (p. 6, throw ; p. 15, fonctions ; p. 16, types objets).
