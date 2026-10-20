@@ -5,7 +5,7 @@
 export type CodeEtat = "EMM_EPM0_PTE_SNY_DPG" | "EMM_EPM0_PTE_SNY_DPG" | "EMM_EPM0_PTE_SCA_DPG" | "EMM_EPM0_PTE_SFL_DPG" | "EMM_EPM0_PTE_SCO_DPG" | "EMM_EPM0_PTE_SMA_DPG" | "EMM_EPM0_PTE_STX_DPG";
 
 export type Etat = {
-    nom: String;
+    nom: string;
     code: CodeEtat;
 };
 
