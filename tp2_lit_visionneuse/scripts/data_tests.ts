@@ -4,10 +4,11 @@
 // Sources : https://share.google/CzNHMIvitHAUeRupS
 // Search Query : Can I export the whole content of a typescript file 
 // into another file ?
-import { SwapiResourceTypes } from "./swapi_types";
+//import { SwapiResourceTypes } from "./swapi_types";
+//export { DataSeeds } from "./data_tests";
 
 
-const planet1 = {
+export const planet1 = {
     id: 1, 
     name: "Tatooine",
     rotation_period: "23",
@@ -25,7 +26,7 @@ const planet1 = {
     url: "https://swapi.dev/api/planets/1/"
 }
 
-const planet2 = {
+export const planet2 = {
     id: 2, 
     name: "Alderaan",
     rotation_period: "24",
@@ -43,7 +44,7 @@ const planet2 = {
     url: "https://swapi.dev/api/planets/2/"
 }
 
-const planet3 = {
+export const planet3 = {
     id: 3, 
     name: "Yavin IV",
     rotation_period: "24",
@@ -61,7 +62,7 @@ const planet3 = {
     url: "https://swapi.dev/api/planets/3/"
 }
 
-const planet4 = {
+export const planet4 = {
     id: 4, 
     name: "Hoth",
     rotation_period: "23",
@@ -79,7 +80,7 @@ const planet4 = {
     url: "https://swapi.dev/api/planets/4/"
 }
 
-const planet5 = {
+export const planet5 = {
     id: 5, 
     name: "Dagobah",
     rotation_period: "23",
@@ -97,7 +98,7 @@ const planet5 = {
     url: "https://swapi.dev/api/planets/5/"
 }
 
-const planet6 = {
+export const planet6 = {
     id: 6, 
     name: "Bespin",
     rotation_period: "12",
@@ -115,7 +116,7 @@ const planet6 = {
     url: "https://swapi.dev/api/planets/6/"
 }
 
-const planet7 = {
+export const planet7 = {
     id: 7, 
     name: "Endor",
     rotation_period: "18",
@@ -133,7 +134,7 @@ const planet7 = {
     url: "https://swapi.dev/api/planets/7/"
 }
 
-const planet8 = {
+export const planet8 = {
     id: 8, 
     name: "Naboo",
     rotation_period: "26",
@@ -151,7 +152,7 @@ const planet8 = {
     url: "https://swapi.dev/api/planets/8/"
 }
 
-const planet9 = {
+export const planet9 = {
     id: 9, 
     name: "Coruscant",
     rotation_period: "24",
@@ -197,7 +198,7 @@ const planet27 = {
 // 'planet1' seulement si film1 est déclarée avant planet1. 
 // Et si tel est le cas, planet1 ne peut pas être dans la liste 
 // des valeurs de film1 !!!
-const film1 = {
+export const film1 = {
     id: 1, 
     title: "A New Hope",
     episode_id: 4,
@@ -215,7 +216,7 @@ const film1 = {
     url: "https://swapi.dev/api/films/1/"
 }
 
-const film2 = {
+export const film2 = {
     id: 2, 
     title: "The Empire Strikes Back",
     episode_id: 5,
@@ -233,7 +234,7 @@ const film2 = {
     url: "https://swapi.dev/api/films/2/"
 }
 
-const film3 = {
+export const film3 = {
     id: 3, 
     title: "Return of the Jedi", 
     episode_id: 6, 
@@ -251,7 +252,7 @@ const film3 = {
     url: "https://swapi.dev/api/films/3/"
 }
 
-const film4 = {
+export const film4 = {
     id: 4, 
     title: "The Phantom Menace",
     episode_id: 1,
@@ -269,7 +270,7 @@ const film4 = {
     url: "https://swapi.dev/api/films/4/"
 }
 
-const film5 = {
+export const film5 = {
     id: 5, 
     title: "Attack of the Clones",
     episode_id: 2, 

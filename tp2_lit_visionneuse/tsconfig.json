@@ -6,6 +6,10 @@
     "module": "esnext",
     "lib": ["ES2023", "DOM"],
     "types": ["vite/client"],
+    "typeRoots": [
+      "./node_modules/@types", 
+      "./node_modules"
+    ],
     "allowArbitraryExtensions": true,
     "skipLibCheck": true,
 
