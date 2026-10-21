@@ -1,5 +1,5 @@
 
-//import { Film } from "./swapi_types";
+import type { Film } from "./swapi_types";
 //import { People } from "./swapi_types";
 //import { Planet } from "./swapi_types";
 //import { Species } from "./swapi_types";
@@ -43,6 +43,62 @@ export const obtenirFilmAPI2 = (url: string) : Promise<SwapiResourceTypes.Film[]
     });
 };
 
+
+export const getFilmResourceFromAPI = async (resourceUrl: string) : 
+    Promise<SwapiResourceTypes.Film[]> => {
+    return new Promise((resolve, reject) => {
+        fetch(resourceUrl)
+            .then((response) => response.json())
+            .then((json) => { 
+                resolve(json.results || json)
+            })
+            .catch((error) => {
+                console.log(error);
+                reject(error);
+            })
+    });
+};
+
+// Sources (corrections) : 
+export const getFilmResourceAPI = async (resourceUrl: string) : 
+    Promise<SwapiResourceTypes.Film> => {
+    return await new Promise((resolve, reject) => {
+        fetch(resourceUrl)
+            .then((response) => response.json())
+            .then((json) => { 
+                resolve(json.results || json)
+            })
+            .catch((error) => {
+                console.log(error);
+                reject(error);
+            })
+    });
+};
+
+/**
+ * 
+ * @param resourceUrl 
+ * @returns 
+ * 
+ * Correction to initial code provided :
+ * Sources : https://share.google/aimode/13v0M1jphEmdq771A
+ */
+export const getFilmResourceAPI_0 = async (resourceUrl: string): 
+    Promise<SwapiResourceTypes.Film> => {
+    try {
+        const response = await fetch(resourceUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Failed to fetch film resource:", error);
+        throw error; // Re-throw so the caller knows the operation failed
+    }
+};
+
+
+
 // Sources : https://share.google/aimode/DsX8AnhmSTfZXXCY0
 export const obtenirFilmAPI = async (url: string): 
     Promise<SwapiResourceTypes.Film[]> => {
@@ -64,7 +120,7 @@ export const getResourceFromAPI = (ressourceUrl: string) => {
         fetch(ressourceUrl)
             .then((response) => response.json())
             .then((json) => { 
-                resolve(json)
+                resolve(json.results || json)
             })
             .catch((error) => {
                 reject(error);
@@ -72,6 +128,61 @@ export const getResourceFromAPI = (ressourceUrl: string) => {
             })
     });
 };
+
+
+
+/* 
+    Avec un appel à la fonction (précédente) 'getResourceFromAPI(...), 
+    la fonction ci-dessous retourne un ensemble ciblé de resource 
+    entre deux bornes d'identifiants considérés...
+*/
+export function getFilmResourceCollections(firstResourceId: number, 
+                            lastResourceId: number, 
+                            baseResourceUrl: string = "https://swapi.dev/api/films/") {
+    
+    // Exemple d'url complet : 
+    // const filmUrl = "https://swapi.dev/api/films/1";
+    // const planetUrl = "https://swapi.dev/api/planets/3";
+
+    const collectionResources: SwapiResourceTypes.Film[] = [];
+
+    // Aucun identifiant à valeur négative en paramètres n'est accepté.
+    // Toute valeur négative est systématiquement remplacée la valeur '1'.
+    if (firstResourceId <= 0) {
+        firstResourceId = 1;
+    }
+    else if (lastResourceId <= 0) {
+        lastResourceId = 1;
+    }    
+
+    // Basculer les valeurs entre les deux identifiants en paramètres 
+    // dans le cas où le dernier identifiant est inférieur au premier.
+    if (lastResourceId < firstResourceId) {
+        const tempResourceId = lastResourceId;
+        lastResourceId = firstResourceId;
+        firstResourceId = tempResourceId;
+    }
+
+    /**
+     * Critères (exemples) de conformité des paramètres d'url :
+     * baseApiUrl : https://swapi.dev/api/
+     * baseResourceUrl : films/
+     * firstResourceId ou lastResourceId : 3
+     */
+    for (let resourceId: number = firstResourceId; resourceId <= lastResourceId; resourceId++) {
+        const currentResourceUrl = baseResourceUrl + resourceId;
+        //const currentResource: Film = await getFilmResourceAPI(currentResourceUrl);
+        // Bug correction from Google / Gemini...
+        // Sources : 
+        getFilmResourceAPI(currentResourceUrl).then((currentResource: Film) => {
+            collectionResources.push(currentResource)
+        });
+    } 
+
+    return collectionResources;
+}
+
+//==============================================================
 
 
 /* 
