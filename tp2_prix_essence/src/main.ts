@@ -1,11 +1,18 @@
-// Source : algorithme de B6 proposé par Claude (Anthropic, 2026), IA générative, le 19 octobre 2026.
-// Prompt (algorithme) : « recommence et fait ceci de B1 a B8 :donne moi l'algorithme de B1 ,
-//   quels sont les fichiers que l'on doit avaoir a quoi ils servent , leurs roles et les etapes de de B1,
-//   les differents algorithmes de B1, »
+// Code de départ : corrigé de référence généré par Claude (Anthropic, 2026), IA générative, 19 octobre 2026.
+// Discussion Claude : https://claude.ai/share/74bc8524-479f-4be1-9a2f-ba5818508218
+// Prompts (Claude) : « recommence et fait ceci de B1 a B8 :donne moi l'algorithme et la structure de B1 , quels sont les fichiers
+//   que l'on doit avaoir a quoi ils servent , leurs roles et les etapes de de B1, les differents algorithmes de B1, » ;
+//   « je ne veux pas l'utiliser je veux juste l'avoir comme refentiel: redonne moi la correction en respecatnt uniquement les notions de cours » ;
+//   « dans le cours on a vu DOMContenLoaded ? »
+// Tests : Gemini (Google), 19 octobre 2026. Prompt : « comment tester sur vscode que ca fonctionne »
+// Discussions Gemini : voir la liste des liens dans le README (liens 1 à 5).
 // Cours : Filiatreault, K., Événements (p. 5, submit ; p. 6, addEventListener et DOMContentLoaded) ;
 //         Filiatreault, K., Précisions sur les événements (p. 7, preventDefault) ;
-//         Filiatreault, K., JS – Promises, async et await (p. 11 à 13) et exemple 03_promiseAll.js (Promise.all) ;
-//         Lemelin, B., Théorie – TypeScript (p. 24, déstructuration ; p. 25, as) ; JS – Array Cheat Sheet (p. 3, find).
+//         Filiatreault, K., JS – Promises, async et await (p. 11 à 13, await et try/catch) ;
+//         Filiatreault, K., exemple 03_promiseAll.js (Promise.all) ;
+//         Lemelin, B., Théorie – TypeScript (p. 24, déstructuration ; p. 25, as) ;
+//         JS – Array Cheat Sheet (p. 3, find).
+
 
 import './style.css';
 import { ETATS } from './etats';
@@ -55,6 +62,11 @@ const afficherPrix = async (evenement: Event) => {
 const initialiser = async () => {
     remplirEtats();
     remplirPeriodes();
+
+    // HTMLFormElement : type TypeScript d'une balise <form>. Commande non enseignée
+    // (le cours montre seulement HTMLButtonElement, Théorie – TypeScript, p. 25).
+    // Source : MDN Web Docs, « HTMLFormElement », https://developer.mozilla.org/fr/docs/Web/API/HTMLFormElement
+
 
     const formulaire = document.getElementById("formulaire") as HTMLFormElement;
     formulaire.addEventListener("submit", afficherPrix);

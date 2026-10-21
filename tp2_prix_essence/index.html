@@ -1,45 +1,14 @@
-    <!-- 
-      
-      1. SOURCES TIERCES :
-         - Framework CSS/JS : Bootstrap v5.3.3 (Licence MIT - https://getbootstrap.com/)
-         - CDN : jsDelivr (https://www.jsdelivr.com/)
-         - Source probable des données applicatives : U.S. Energy Information Administration (https://www.eia.gov/)
-
-      Source : code de référence généré par Claude (Anthropic, 2026)
-      2. REQUÊTE ORIGINALE (PROMPT) :
-         "je veux ajouter du bootstrap: [code HTML brut]
-          je veux utiliser le lien bootstrap en ligne simple
-          je veux un meilleur formulaire
-  
-      // Source : algorithme de B6 proposé par Claude (Anthropic, 2026), IA générative, le 19 octobre 2026.
-// Prompt (algorithme) : « recommence et fait ceci de B1 a B8 :donne moi l'algorithme de B1 ,
-//   quels sont les fichiers que l'on doit avaoir a quoi ils servent , leurs roles et les etapes de de B1,
-//   les differents algorithmes de B1, »
-
-
-      3. PROPOSITION :
-         - Conserver intégralement les identifiants originaux (id="formulaire", 
-           id="devise", id="etat", id="mois-debut", id="annee-debut", etc.) 
-           afin de garantir une compatibilité sans rupture avec les scripts JS/TS.
-         - Remplacer le rendu brut sans mise en page par une interface structurée en 
-           grille responsive, avec des conteneurs visuels clairs (cartes) et des champs
-           de formulaire stylisés selon le standard visuel Bootstrap 5.
-
-      4. DÉTAIL DES MODIFICATIONS APPORTÉES :
-         - Balise <head> : Inclusion du CDN Bootstrap 5.3.3 minifié.
-         - <body> : Ajout des classes utilitaires "bg-light" et "py-5" pour un fond doux et un espacement vertical.
-         - <main> : Transformation en conteneur centré ("container") avec limitation de largeur maximale (900px).
-         - <form> : Intégration dans une carte Bootstrap ("card", "shadow-sm", "border-0").
-         - Éléments <select> : Remplacement des styles par défaut par la classe ".form-select".
-         - Éléments <label> : Ajout des classes ".form-label", ".fw-semibold" et ".small".
-         - Champs Début / Fin (<fieldset>) : Regroupement sur 2 colonnes via ".row" et ".col-md-6",
-           avec habillage carte légère (".border", ".rounded-3", ".bg-body-tertiary").
-         - Bouton (<button>) : Application des classes ".btn", ".btn-primary", ".btn-lg" et conteneur ".d-grid" 
-           pour un bouton pleine largeur, accessible et tactile.
-         - <footer> : Ajout d'une section de bas de page créditant formellement les outils et données.
-         - Script : Ajout du bundle JavaScript Bootstrap avant la fermeture du corps.
-      ========================================================================
-    -->
+<!-- Structure du formulaire : corrigé de référence généré par Claude (Anthropic, 2026), IA générative, 19 octobre 2026.
+     Discussion Claude : https://claude.ai/share/74bc8524-479f-4be1-9a2f-ba5818508218
+     Prompts (Claude) : « recommence et fait ceci de B1 a B8 :donne moi l'algorithme et la structure de B1 , quels sont les fichiers
+     que l'on doit avaoir a quoi ils servent , leurs roles et les etapes de de B1, les differents algorithmes de B1, » ;
+     « je ne veux pas l'utiliser je veux juste l'avoir comme refentiel: redonne moi la correction en respecatnt uniquement les notions de cours »
+     Mise en page Bootstrap : générée avec Gemini (Google), 19 octobre 2026.
+     Discussions Gemini : voir la liste des liens dans le README (liens 1 à 5).
+     Prompts (Gemini) : « je veux ajouter du bootstrap: [code HTML initial] » ; « je veux utiliser le lien bootstrap en ligne simpe » ;
+     « [capture d'écran] je veux un meilleur formulaire » ; « met la source pour eviter le plagiat » ;
+     « mentionne aussi ta modification et ta propotion et le prompt »
+     Notion hors cours : Bootstrap 5.3.3 (licence MIT), https://getbootstrap.com ; CDN jsDelivr, https://www.jsdelivr.com -->
 
 <!doctype html>
 <html lang="fr">
